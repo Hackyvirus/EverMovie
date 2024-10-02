@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", system-ui;
+            font-weight: 400;
+            text-decoration: none;
+            font-style: normal;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+            background: rgb(255, 255, 255);
+            color: white;
+            height: 100px;
+        }
+
+        nav {
+            width: 100%;
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 100px;
+        }
+
+        #logo {
+            width: 115px;
+        }
+
+        .left-nav {
+            width: 50%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .right-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: max-content;
+            gap: 30px;
+        }
+
+        /* Search Section */
+        .search input[type="text"] {
+            padding: 10px;
+            border-radius: 20px;
+            border: none;
+            width: 250px;
+            outline: none;
+            margin-right: 20px;
+
+        }
+
+        input:focus {
+            padding-left: 20px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .search input[type="text"]::placeholder {
+            color: #999;
+        }
+
+        .search {
+            height: 35px;
+            padding-left: 20px;
+            display: flex;
+            flex-flow: row;
+            -moz-box-pack: start;
+            justify-content: flex-start;
+            opacity: 1;
+            cursor: text;
+            width: calc(100% - 134px);
+            max-width: 549px;
+            background-color: rgb(255, 255, 255);
+            border: 1px solid rgb(238, 238, 238);
+            border-radius: 4px;
+            -moz-box-align: center;
+            align-items: center;
+
+        }
+
+        select#city {
+            cursor: pointer;
+            color: white;
+            padding: 10px;
+            background-color: #fff;
+            border: none;
+            color: rgb(26, 26, 26);
+            border-radius: 5px;
+            outline: none;
+            font-size: 14px;
+            width: 90px;
+        }
+
+        select#city option {
+            color: black;
+        }
+
+        span {
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-left: 15px;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .sign-up {
+            color: rgb(255, 255, 255);
+            background-color: rgb(248, 68, 100);
+            font-size: 12px;
+            height: 25px;
+            line-height: 25px;
+            width: 67px;
+            text-align: center;
+            border-radius: 4px;
+            border: 1px solid rgb(248, 68, 100);
+            display: block;
+        }
+
+        .botton-nav {
+            color: rgb(51, 51, 51);
+            width: 100%;
+            background: rgb(245, 245, 245);
+            padding: 0px;
+            height: 40%;
+            padding: 0 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .left-ul,
+        .right-ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            font-size: 14px;
+            cursor: pointer;
+            position: relative;
+            text-decoration: none;
+            font-weight: 400;
+            color: rgb(51, 51, 51);
+            transition: 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        li {
+            padding: 0 10px;
+        }
+
+        main {
+            height: max-content;
+            background-color: rgb(26, 26, 26);
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 40px 0;
+            font-size: 14px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-column {
+            flex-basis: 22%;
+            margin-bottom: 20px;
+        }
+
+        .footer-column h4 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: rgb(248, 68, 100);
+            ;
+        }
+
+        .footer-column ul {
+            list-style-type: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            text-decoration: none;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: rgb(248, 68, 100);
+            ;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .social-icons img {
+            width: 25px;
+            height: 25px;
+            border-radius: 7px;
+            transition: filter 0.3s ease;
+        }
+
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+            border-top: 1px solid #444;
+            padding-top: 20px;
+        }
+
+        .footer-bottom p {
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif !important;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .mainscreen {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            background-color: #DFDBE5;
+            background-image: url("https://wallpaperaccess.com/full/3063067.png");
+            color: #999;
+        }
+
+        .card {
+            width: 60rem;
+            margin: auto;
+            background: white;
+            position: center;
+            align-self: center;
+            top: 50rem;
+            border-radius: 1.5rem;
+            box-shadow: 4px 3px 20px #3535358c;
+            display: flex;
+            flex-direction: row;
+
+        }
+
+        .leftside {
+            background-color: rgb(248, 68, 100);
+            width: 25rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-top-left-radius: 1.5rem;
+            border-bottom-left-radius: 1.5rem;
+        }
+
+        .product {
+            object-fit: cover;
+            width: 20em;
+            height: 20em;
+            border-radius: 100%;
+        }
+
+        .rightside {
+            background-color: #ffffff;
+            width: 35rem;
+            border-bottom-right-radius: 1.5rem;
+            border-top-right-radius: 1.5rem;
+            padding: 1rem 2rem 3rem 3rem;
+        }
+
+        p {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin: .8rem 0;
+        }
+
+        .inputbox {
+            color: #030303;
+            width: 100%;
+            padding: 0.5rem;
+            border: none;
+            border-bottom: 1.5px solid #ccc;
+            margin-bottom: 1rem;
+            border-radius: 0.3rem;
+            font-family: 'Roboto', sans-serif;
+            color: #615a5a;
+            font-size: 1.1rem;
+            font-weight: 500;
+            outline: none;
+        }
+
+        .expcvv {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 0.6rem;
+        }
+
+        .expcvv_text {
+            padding-right: 1rem;
+        }
+
+        .expcvv_text2 {
+            padding: 0 1rem;
+        }
+
+        .button {
+            background-color: rgb(248, 68, 100);
+            padding: 15px;
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-weight: 400;
+            font-size: 1.2rem;
+            margin-top: 10px;
+            width: 100%;
+            letter-spacing: .11rem;
+            outline: none;
+        }
+
+        .button:hover {
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 3px 3px 6px #38373785;
+        }
+
+        @media only screen and (max-width: 1000px) {
+            .card {
+                flex-direction: column;
+                width: auto;
+
+            }
+
+            .leftside {
+                width: 100%;
+                border-top-right-radius: 0;
+                border-bottom-left-radius: 0;
+                border-top-right-radius: 0;
+                border-radius: 0;
+            }
+
+            .rightside {
+                width: auto;
+                border-bottom-left-radius: 1.5rem;
+                padding: 0.5rem 3rem 3rem 2rem;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="left-nav">
+                <div class="logo">
+                    <a href="/"> <img id="logo" src="MoviePosters/logo.png" alt="Logo"></a>
+                </div>
+                <input class="search" type="text"
+                    placeholder="Search for Movies, Evenets, Palys, Sports and Activities ">
+            </div>
+            <div class="right-nav">
+                <div>
+                    <select name="city" id="city">
+                        <option value="Pune">Pune</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Delhi">Delhi</option>
+                    </select>
+                </div>
+                <div class="sign-up">
+                  <a href="signup.html">  Sing Up</a>
+                </div>
+            </div>
+        </nav>
+        <div class="botton-nav">
+            <ul class="left-ul">
+                <li>Mvies</li>
+                <li>Steam</li>
+                <li>Evenets</li>
+                <li>Plays</li>
+                <li>Sports</li>
+                <li>Activities</li>
+            </ul>
+            <ul class="right-ul">
+                <li>ListYourShow</li>
+                <li>Corporate</li>
+                <li>Offers</li>
+                <li>Gift Cards</li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="mainscreen">
+
+        <div class="card">
+            <div class="leftside">
+                <img src="MoviePosters/1.jpg" class="product" alt="Shoes" />
+            </div>
+            <div class="rightside">
+                <form action="">
+                    <h1>CheckOut</h1>
+                    <h2>Payment Information</h2>
+                    <p>Cardholder Name</p>
+                    <input type="text" class="inputbox" name="name" required />
+                    <p>Card Number</p>
+                    <input type="number" class="inputbox" name="card_number" id="card_number" required />
+
+                    <p>Card Type</p>
+                    <select class="inputbox" name="card_type" id="card_type" required>
+                        <option value="">--Select a Card Type--</option>
+                        <option value="Visa">Visa</option>
+                        <option value="RuPay">RuPay</option>
+                        <option value="MasterCard">MasterCard</option>
+                    </select>
+                    <div class="expcvv">
+
+                        <p class="expcvv_text">Expiry</p>
+                        <input type="date" class="inputbox" name="exp_date" id="exp_date" required />
+
+                        <p class="expcvv_text2">CVV</p>
+                        <input type="password" class="inputbox" name="cvv" id="cvv" required />
+                    </div>
+                    <p></p>
+                    <button type="submit" class="button">CheckOut</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/">Movies</a></li>
+                    <li><a href="/">Events</a></li>
+                    <li><a href="/">Plays</a></li>
+                    <li><a href="/">Sports</a></li>
+                    <li><a href="/">Offers</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Policies</h4>
+                <ul>
+                    <li><a href="/">Privacy Policy</a></li>
+                    <li><a href="/">Terms of Service</a></li>
+                    <li><a href="/">Refund Policy</a></li>
+                    <li><a href="/">Security</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="aboutUs.html">About Us</a></li>
+                    <li><a href="/">Careers</a></li>
+                    <li><a href="contactUs.html">Contact Us</a></li>
+                    <li><a href="/">Press Releases</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="/"><img src="MoviePosters/face.jpg" alt="Facebook"></a>
+                    <a href="/"><img src="MoviePosters/x.png" alt="X"></a>
+                    <a href="/"><img src="MoviePosters/instagram.png" alt="Instagram"></a>
+                    <a href="/"><img src="MoviePosters/youtube.png" alt="YouTube"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 BooK By EverMovie. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

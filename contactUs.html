@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", system-ui;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+            background: rgb(255, 255, 255);
+            color: white;
+            height: 100px;
+        }
+
+        nav {
+            width: 100%;
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 100px;
+        }
+
+        .person {
+            display: flex;
+            gap: 50px;
+            width: 75%;
+        }
+
+        .person2 {
+            display: flex;
+            flex-direction: row-reverse;
+            gap: 50px;
+            width: 75%;
+        }
+
+        .right-person {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .left-person img {
+            border-radius: 50%;
+        }
+
+        #logo {
+            width: 115px;
+        }
+
+        .left-nav {
+            width: 50%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .right-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: max-content;
+            gap: 30px;
+        }
+
+        /* Search Section */
+        .search input[type="text"] {
+            padding: 10px;
+            border-radius: 20px;
+            border: none;
+            width: 250px;
+            outline: none;
+            margin-right: 20px;
+
+        }
+
+        input:focus {
+            padding-left: 20px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .search input[type="text"]::placeholder {
+            color: #999;
+        }
+
+        .search {
+            height: 35px;
+            padding-left: 20px;
+            display: flex;
+            flex-flow: row;
+            justify-content: flex-start;
+            opacity: 1;
+            cursor: text;
+            width: calc(100% - 134px);
+            background-color: rgb(255, 255, 255);
+            border: 1px solid rgb(238, 238, 238);
+            border-radius: 4px;
+            align-items: center;
+
+        }
+
+        select#city {
+            cursor: pointer;
+            color: white;
+            padding: 10px;
+            background-color: #fff;
+            border: none;
+            color: rgb(26, 26, 26);
+            border-radius: 5px;
+            outline: none;
+            font-size: 14px;
+            width: 90px;
+        }
+
+        select#city option {
+            color: black;
+        }
+
+        span {
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-left: 15px;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .sign-up {
+            color: rgb(255, 255, 255);
+            background-color: rgb(248, 68, 100);
+            font-size: 12px;
+            height: 25px;
+            line-height: 25px;
+            width: 67px;
+            text-align: center;
+            border-radius: 4px;
+            border: 1px solid rgb(248, 68, 100);
+            display: block;
+        }
+
+        .botton-nav {
+            color: rgb(51, 51, 51);
+            width: 100%;
+            background: rgb(245, 245, 245);
+            padding: 0px;
+            height: 40%;
+            padding: 0 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .left-ul,
+        .right-ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            font-size: 14px;
+            cursor: pointer;
+            position: relative;
+            text-decoration: none;
+            font-weight: 400;
+            color: rgb(51, 51, 51);
+            transition: 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        li {
+            padding: 0 10px;
+        }
+
+
+        /* footer  */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 40px 0;
+            font-size: 14px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-column {
+            flex-basis: 22%;
+            margin-bottom: 20px;
+        }
+
+        .footer-column h4 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: rgb(248, 68, 100);
+            ;
+        }
+
+        .footer-column ul {
+            list-style-type: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            text-decoration: none;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: rgb(248, 68, 100);
+            ;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .social-icons img {
+            width: 25px;
+            height: 25px;
+            border-radius: 7px;
+            transition: filter 0.3s ease;
+        }
+
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+            border-top: 1px solid #444;
+            padding-top: 20px;
+        }
+
+        .footer-bottom p {
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        main {
+            padding: 30px 100px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .input {
+            width: 300px;
+        }
+
+        .input-group {
+            display: flex;
+            justify-content: start;
+            gap: 20px;
+            align-items: center;
+        }
+
+        label {
+            width: 100px;
+        }
+
+        form {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .input-group-container {
+            width: 45%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        main h2 {
+            font-size: 30px;
+            margin: 25px auto;
+        }
+
+        main .book h2 {
+            margin: 0;
+            letter-spacing: 0.2px;
+            padding: 12px 8px;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 24px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .book {
+            padding: 0px;
+            border: 1px solid rgb(248, 68, 100);
+            color: rgb(255, 255, 255);
+            background-color: rgb(248, 68, 100);
+            border-radius: 8px;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 8px;
+            width: 137px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            height: 50px;
+        }
+
+        #address {
+            padding: 30px 240px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .add h2 {
+            font-size: 30px;
+            font-weight: 500;
+        }
+
+        .add {
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .soc {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="left-nav">
+                <div class="logo">
+                   <a href="/"> <img id="logo" src="MoviePosters/logo.png" alt="Logo"></a>
+                </div>
+                <input class="search" type="text"
+                    placeholder="Search for Movies, Evenets, Palys, Sports and Activities ">
+            </div>
+            <div class="right-nav">
+                <div>
+                    <select name="city" id="city">
+                        <option value="Pune">Pune</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Delhi">Delhi</option>
+                    </select>
+                </div>
+                <div class="sign-up">
+                    <a href="signup.html">  Sing Up</a>
+                </div>
+            </div>
+        </nav>
+        <div class="botton-nav">
+            <ul class="left-ul">
+                <li>Mvies</li>
+                <li>Steam</li>
+                <li>Evenets</li>
+                <li>Plays</li>
+                <li>Sports</li>
+                <li>Activities</li>
+            </ul>
+            <ul class="right-ul">
+                <li>ListYourShow</li>
+                <li>Corporate</li>
+                <li>Offers</li>
+                <li>Gift Cards</li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <h2>Contact Us</h2>
+        <form action="#" method="get">
+            <div class="input-group-container">
+                <div class="input-group">
+                    <label for="fname">First Name</label>
+                    <input class="search input" type="text" id="fname" placeholder="First name">
+                </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input class="search input" type="email" id="email" placeholder="email">
+                </div>
+                <div class="input-group">
+                    <label for="msg">Message</label>
+                    <input class="search input" type="text" id="msg" placeholder="Your Message">
+                </div>
+            </div>
+            <div class="input-group-container">
+                <div class="input-group">
+                    <label for="lname">Last Name</label>
+                    <input class="search input" type="text" id="name" placeholder="Last Name">
+                </div>
+                <div class="input-group">
+                    <label for="phone">Phone</label>
+                    <input class="search input" type="text" id="phone" placeholder="Phone">
+                </div>
+                <div class="input-group">
+                    <label for="msg">Message</label>
+                    <input class="search input" type="text" id="msg" placeholder="Your Message">
+                </div>
+            </div>
+        </form>
+        <div class="book">
+            <h2>Book Now</h2>
+        </div>
+    </main>
+    <div id="address">
+        <div class="add">
+            <h2>Address</h2>
+            <p>Irecin Colony <br>Lane No 3<br>Koregaon Park,Pune</p>
+        </div>
+        <div class="add">
+            <h2>Contact No</h2>
+            <p>+91 9356381344 <br>+91 76718 65834<br>+91 76710 52323</p>
+        </div>
+        <div class="add">
+            <h2>Social Media</h2>
+            <div class="soc">
+                <p style="text-decoration: underline;cursor: pointer;display: flex;align-items: center;">Instagram <img
+                        src="MoviePosters/instagram.png" style="width: 20px; margin-left: 10px;" alt=""> </p>
+                <p style="text-decoration: underline;cursor: pointer;display: flex;align-items: center;">X <img
+                        src="MoviePosters/x.png" alt="" style="width: 20px; margin-left: 10px;"> </p>
+                <p style="text-decoration: underline;cursor: pointer;display: flex;align-items: center;">Youtube <img
+                        src="MoviePosters/youtube.png" style="width: 20px; margin-left: 10px;" alt=""> </p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/">Movies</a></li>
+                    <li><a href="/">Events</a></li>
+                    <li><a href="/">Plays</a></li>
+                    <li><a href="/">Sports</a></li>
+                    <li><a href="/">Offers</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Policies</h4>
+                <ul>
+                    <li><a href="/">Privacy Policy</a></li>
+                    <li><a href="/">Terms of Service</a></li>
+                    <li><a href="/">Refund Policy</a></li>
+                    <li><a href="/">Security</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="aboutUs.html">About Us</a></li>
+                    <li><a href="/">Careers</a></li>
+                    <li><a href="contactUs.html">Contact Us</a></li>
+                    <li><a href="/">Press Releases</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="/"><img src="MoviePosters/face.jpg" alt="Facebook"></a>
+                    <a href="/"><img src="MoviePosters/x.png" alt="X"></a>
+                    <a href="/"><img src="MoviePosters/instagram.png" alt="Instagram"></a>
+                    <a href="/"><img src="MoviePosters/youtube.png" alt="YouTube"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 BooK By EverMovie. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

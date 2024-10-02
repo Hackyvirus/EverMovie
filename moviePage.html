@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", system-ui;
+            font-weight: 400;
+            text-decoration: none;
+            font-style: normal;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+            background: rgb(255, 255, 255);
+            color: white;
+            height: 100px;
+        }
+
+        nav {
+            width: 100%;
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 100px;
+        }
+
+        #logo {
+            width: 115px;
+        }
+
+        .left-nav {
+            width: 50%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .right-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: max-content;
+            gap: 30px;
+        }
+
+        /* Search Section */
+        .search input[type="text"] {
+            padding: 10px;
+            border-radius: 20px;
+            border: none;
+            width: 250px;
+            outline: none;
+            margin-right: 20px;
+
+        }
+
+        input:focus {
+            padding-left: 20px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .search input[type="text"]::placeholder {
+            color: #999;
+        }
+
+        .search {
+            height: 35px;
+            padding-left: 20px;
+            display: flex;
+            flex-flow: row;
+            -moz-box-pack: start;
+            justify-content: flex-start;
+            opacity: 1;
+            cursor: text;
+            width: calc(100% - 134px);
+            max-width: 549px;
+            background-color: rgb(255, 255, 255);
+            border: 1px solid rgb(238, 238, 238);
+            border-radius: 4px;
+            -moz-box-align: center;
+            align-items: center;
+
+        }
+
+        select#city {
+            cursor: pointer;
+            color: white;
+            padding: 10px;
+            background-color: #fff;
+            border: none;
+            color: rgb(26, 26, 26);
+            border-radius: 5px;
+            outline: none;
+            font-size: 14px;
+            width: 90px;
+        }
+
+        select#city option {
+            color: black;
+        }
+
+        span {
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-left: 15px;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .sign-up {
+            color: rgb(255, 255, 255);
+            background-color: rgb(248, 68, 100);
+            font-size: 12px;
+            height: 25px;
+            line-height: 25px;
+            width: 67px;
+            text-align: center;
+            border-radius: 4px;
+            border: 1px solid rgb(248, 68, 100);
+            display: block;
+        }
+
+        .botton-nav {
+            color: rgb(51, 51, 51);
+            width: 100%;
+            background: rgb(245, 245, 245);
+            padding: 0px;
+            height: 40%;
+            padding: 0 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .left-ul,
+        .right-ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            font-size: 14px;
+            cursor: pointer;
+            position: relative;
+            text-decoration: none;
+            font-weight: 400;
+            color: rgb(51, 51, 51);
+            transition: 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        li {
+            padding: 0 10px;
+        }
+
+        main {
+            height: max-content;
+            background-color: rgb(26, 26, 26);
+        }
+
+        #movieInfor {
+            width: 100%;
+            height: 500px;
+            background-image: linear-gradient(90deg, rgb(26, 26, 26) 24.97%, rgb(26, 26, 26) 38.3%, rgba(26, 26, 26, 0.04) 97.47%, rgb(26, 26, 26) 100%), url("MoviePosters/a.avif");
+            background-repeat: no-repeat;
+            background-position: right center;
+            background-color: rgb(26, 26, 26);
+            position: relative;
+            margin: 0px auto;
+            display: flex;
+            padding: 0 100px;
+            align-items: center;
+        }
+
+        #img-container {
+            width: 280px;
+            height: 420px;
+            color: #fff;
+            border-radius: 16px 16px 0px 0px;
+            background-color: rgb(229, 229, 229);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #img-container #MoviePoster {
+            border-radius: 16px 16px 0px 0px;
+            object-fit: cover;
+            width: auto;
+            height: 392px;
+        }
+
+        #img-container .trailer {
+            cursor: pointer;
+            z-index: 1;
+            height: 24px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -moz-box-pack: center;
+            justify-content: center;
+            -moz-box-align: center;
+            align-items: center;
+            display: flex;
+            background: rgba(34, 34, 34, 0.8);
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 8px;
+            border-radius: 24px;
+            padding: 4px 8px;
+
+        }
+
+        .cenemas {
+            border-radius: 0px 0px 16px 16px;
+            background: rgb(0, 0, 0);
+            -moz-box-pack: center;
+            justify-content: center;
+            -moz-box-align: center;
+            align-items: center;
+            display: flex;
+            padding: 8px;
+
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* footer  */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 40px 0;
+            font-size: 14px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-column {
+            flex-basis: 22%;
+            margin-bottom: 20px;
+        }
+
+        .footer-column h4 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: rgb(248, 68, 100);
+            ;
+        }
+
+        .footer-column ul {
+            list-style-type: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            text-decoration: none;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: rgb(248, 68, 100);
+            ;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .social-icons img {
+            width: 25px;
+            height: 25px;
+            border-radius: 7px;
+            transition: filter 0.3s ease;
+        }
+
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+            border-top: 1px solid #444;
+            padding-top: 20px;
+        }
+
+        .footer-bottom p {
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        .rating {
+            display: flex;
+            background-color: rgb(51, 51, 51);
+            border: 0;
+            font-size: 100%;
+            font-weight: 400;
+            margin: 0;
+            height: 72px;
+            padding: 12px 24px;
+            border-radius: 8px;
+            vertical-align: initial;
+            justify-content: start;
+            padding-left: 25px;
+            align-items: center;
+            gap: 35px;
+            width: 400px;
+        }
+
+        .rate-now {
+            cursor: pointer;
+            background-color: rgb(255, 255, 255);
+            border-radius: 8px;
+            -moz-box-pack: center;
+            justify-content: center;
+            -moz-box-align: center;
+            align-items: center;
+            display: flex;
+            margin-left: 4px;
+            padding: 8px 12px;
+            border: medium;
+            color: rgb(26, 26, 26);
+            width: 100px;
+            height: 40px;
+        }
+
+        .rating h1 {
+            letter-spacing: 0.2px;
+            color: rgb(255, 255, 255);
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 24px;
+        }
+
+        .left-section {
+            flex-grow: 1;
+            padding-left: 32px;
+            height: 415px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .rating-left {
+            font-size: 100%;
+            font-weight: 400;
+            margin: 0;
+            padding: 0;
+            vertical-align: initial;
+            width: max-content;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .left-section h1 {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: initial;
+            display: -webkit-box;
+            -moz-box-orient: vertical;
+            color: rgb(255, 255, 255);
+            font-size: 36px;
+            font-weight: bold;
+            line-height: 42px;
+        }
+
+        h5 {
+            letter-spacing: 0.2px;
+            color: rgb(255, 255, 255);
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 24px;
+        }
+
+        h6 {
+            letter-spacing: 0.2px;
+            color: rgb(255, 255, 255);
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 24px;
+        }
+
+        .th-type {
+            display: flex;
+            width: 450px;
+            justify-content: start;
+            gap: 20px;
+
+
+        }
+
+        .th-type h2 {
+            display: flex;
+            flex-wrap: wrap;
+            background-color: rgb(229, 229, 229);
+            color: rgb(0, 0, 0);
+            padding: 2px 8px;
+            border-radius: 2px;
+            font-size: 15px;
+            align-self: flex-start;
+            margin-top: 8px;
+        }
+
+        .timing h2 {
+            display: flex;
+            flex-wrap: wrap;
+            color: rgb(255, 255, 255);
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+            letter-spacing: 0.2px;
+
+        }
+
+        .book h2 {
+            letter-spacing: 0.2px;
+            padding: 12px 8px;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 24px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .book a{
+            color: white;
+        }
+        .book {
+            padding: 0px;
+            border: 1px solid rgb(248, 68, 100);
+            color: rgb(255, 255, 255);
+            background-color: rgb(248, 68, 100);
+            border-radius: 8px;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 8px;
+            width: 215px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        #about {
+            padding: 30px 100px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+        }
+
+        #about h2 {
+            font-size: 24px;
+            font-weight: 500;
+        }
+
+        .cast h2 {
+            font-size: 25px;
+            font-weight: 600;
+        }
+
+        #about hr {
+            width: 100%;
+            border-top: 1px solid rgb(229, 229, 229);
+        }
+
+        .cast hr {
+            margin-top: 30px;
+            width: 100%;
+            border-top: 1px solid rgb(229, 229, 229);
+        }
+
+        .cast {
+            padding: 30px 100px;
+            gap: 30px;
+        }
+
+        .casts {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .person {
+            width: 165px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .person img {
+            width: 140px;
+            border-radius: 50%;
+            text-align: center;
+        }
+
+        .person p {
+            color: rgb(102, 102, 102);
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
+            letter-spacing: 0.2px;
+        }
+
+        /* movie section  */
+        .movie-section {
+            margin-top: 30px;
+            padding: 10px 100px;
+            background-color: #f4f4f4;
+        }
+
+        .movie-sections {
+            margin-top: 30px;
+            padding: 10px 100px;
+            background-color: rgb(43, 49, 72);
+            gap: 0px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .movie-sections p {
+            margin-bottom: 15px;
+        }
+
+        .movie-sections h2 {
+            margin-bottom: 5px;
+            word-break: break-word;
+            color: rgb(255, 255, 255);
+            font-weight: 500;
+            line-height: 1.17;
+            font-size: 24px;
+        }
+
+        .movie-section h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .movie-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            gap: 20px;
+            padding-bottom: 15px;
+        }
+
+        .movie-container::-webkit-scrollbar,
+        .banner-container::-webkit-scrollbar {
+            display: none;
+        }
+
+
+        .movie-container,
+        .banner-container {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+
+        .movie {
+            min-width: 200px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .movie img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .movie p {
+            padding: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .movie:hover {
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="left-nav">
+                <div class="logo">
+                    <a href="/"> <img id="logo" src="MoviePosters/logo.png" alt="Logo"></a>
+                </div>
+                <input class="search" type="text"
+                    placeholder="Search for Movies, Evenets, Palys, Sports and Activities ">
+            </div>
+            <div class="right-nav">
+                <div>
+                    <select name="city" id="city">
+                        <option value="Pune">Pune</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Delhi">Delhi</option>
+                    </select>
+                </div>
+                <div class="sign-up">
+                    <a href="signup.html">  Sing Up</a>
+                </div>
+            </div>
+        </nav>
+        <div class="botton-nav">
+            <ul class="left-ul">
+                <li>Mvies</li>
+                <li>Steam</li>
+                <li>Evenets</li>
+                <li>Plays</li>
+                <li>Sports</li>
+                <li>Activities</li>
+            </ul>
+            <ul class="right-ul">
+                <li>ListYourShow</li>
+                <li>Corporate</li>
+                <li>Offers</li>
+                <li>Gift Cards</li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <section id="movieInfor">
+            <div id="img-container">
+                <img id="MoviePoster" src="MoviePosters/1.jpg" alt="">
+                <p class="trailer"><img src="MoviePosters/play-button.png" alt="" width="15px" height="15px">Trailer</p>
+                <p class="cenemas">In Cinemas</p>
+            </div>
+            <div class="left-section">
+                <h1>Joker: Folie a Deux</h1>
+                <div class="rating">
+                    <div class="rating-left">
+                        <h5>Add your rating & review</h5>
+                        <h6>Your ratings matter</h6>
+                    </div>
+                    <button class="rate-now">
+                        Rate Now
+                    </button>
+                </div>
+                <div class="th-type">
+                    <h2>2D, MX4D, 2D SCREEN, 4DX, ICE, IMAX 2D</h2>
+                    <h2>ENGLISH</h2>
+                </div>
+                <div class="timing">
+                    <h2>2h 30m | Drama, Suspense, Thriller | A | 2 Oct, 2024</h2>
+                </div>
+                <div class="book">
+                    <a href="payment.html"><h2>Book Now</h2></a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div id="about">
+        <h2>About the movie</h2>
+        <p>"Joker: Folie A Deux" finds Arthur Fleck institutionalized at Arkham awaiting trial for his crimes as Joker.
+            While struggling with his dual identity, Arthur not only stumbles upon true love, but also finds the music
+            that`s always been inside him. </p>
+        <hr>
+    </div>
+    <div class="cast">
+        <h2>Cast</h2>
+        <div class="casts">
+            <div class="person">
+                <img src="MoviePosters/c1.avif" alt="sushant">
+                <h2>Joaquin P</h2>
+                <p>as Arthur Fleck / Joker</p>
+            </div>
+            <div class="person">
+                <img src="MoviePosters/c2.avif" alt="sushant">
+                <h2>Lady Gaga</h2>
+                <p>as Harleen Quinzel / Harley Quinn</p>
+            </div>
+            <div class="person">
+                <img src="MoviePosters/c3.avif" alt="sushant">
+                <h2>Zazie Beetz</h2>
+                <p>Actor</p>
+            </div>
+            <div class="person">
+                <img src="MoviePosters/c4.avif" alt="sushant">
+                <h2>Brendan Gleeson</h2>
+                <p>Actor</p>
+            </div>
+            <div class="person">
+                <img src="MoviePosters/c5.avif" alt="sushant">
+                <h2>Catherine Keener</h2>
+                <p>Actor</p>
+            </div>
+            <div class="person">
+                <img src="MoviePosters/c6.avif" alt="sushant">
+                <h2>Jacob Lofland</h2>
+                <p>Actor</p>
+            </div>
+        </div>
+        <hr>
+
+    </div>
+    <div class="cast">
+        <h2>Crew</h2>
+        <div class="casts">
+            <div class="person">
+                <img src="MoviePosters/d1.avif" alt="sushant">
+                <h2>Todd Phillips</h2>
+                <p>Director, Producer, Writer</p>
+            </div>
+            <div class="person">
+                <img src="MoviePosters/d2.avif" alt="sushant">
+                <h2>Scott Silver</h2>
+                <p>Writer, Executive Producer</p>
+            </div>
+            <div class="person">
+                <img src="MoviePosters/d3.avif" alt="sushant">
+                <h2>Michael Uslan</h2>
+                <p>Executive Producer</p>
+            </div>
+            <div class="person">
+                <img src="MoviePosters/d4.avif" alt="sushant">
+                <h2>Mark Friedberg</h2>
+                <p>Executive Producer</p>
+            </div>
+            <div class="person">
+                <img src="MoviePosters/d5.avif" alt="sushant">
+                <h2>Lawrence Sher</h2>
+                <p>Cinematographer</p>
+            </div>
+            <div class="person">
+                <img src="MoviePosters/d6.avif" alt="sushant">
+                <h2>Jeff Groth</h2>
+                <p>Editor</p>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <section class="movie-section">
+
+        <h2>Recommended Movies</h2>
+        <div class="movie-container">
+            <a href="https://google.com">
+                <div class="movie">
+                    <img src="MoviePosters/9.jpg" alt="Pushpa 2">
+                    <p>Pushpa 2</p>
+                </div>
+            </a>
+            <a href="">
+                <div class="movie">
+                    <img src="MoviePosters/10.jpg" alt="Pushpa 2">
+                    <p>Venom 2</p>
+                </div>
+            </a>
+            <a href="">
+                <div class="movie">
+                    <img src="MoviePosters/11.jpg" alt="Pushpa 2">
+                    <p>Gaurdians</p>
+                </div>
+            </a>
+            <a href="">
+                <div class="movie">
+                    <img src="MoviePosters/12.jpg" alt="Pushpa 2">
+                    <p>Thor 4</p>
+                </div>
+            </a>
+            <a href="">
+                <div class="movie">
+                    <img src="MoviePosters/13.jpg" alt="Pushpa 2">
+                    <p>Thor Ragnarok</p>
+                </div>
+            </a>
+            <a href="">
+                <div class="movie">
+                    <img src="MoviePosters/14.jpg" alt="Pushpa 2">
+                    <p>Avengers</p>
+                </div>
+            </a>
+            <a href="">
+                <div class="movie">
+                    <img src="MoviePosters/15.jpg" alt="Pushpa 2">
+                    <p>Wonder Woman</p>
+                </div>
+            </a>
+            <a href="">
+                <div class="movie">
+                    <img src="MoviePosters/8.jpg" alt="Pushpa 2">
+                    <p>Doomsday</p>
+                </div>
+            </a>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/">Movies</a></li>
+                    <li><a href="/">Events</a></li>
+                    <li><a href="/">Plays</a></li>
+                    <li><a href="/">Sports</a></li>
+                    <li><a href="/">Offers</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Policies</h4>
+                <ul>
+                    <li><a href="/">Privacy Policy</a></li>
+                    <li><a href="/">Terms of Service</a></li>
+                    <li><a href="/">Refund Policy</a></li>
+                    <li><a href="/">Security</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="aboutUs.html">About Us</a></li>
+                    <li><a href="/">Careers</a></li>
+                    <li><a href="contactUs.html">Contact Us</a></li>
+                    <li><a href="/">Press Releases</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="/"><img src="MoviePosters/face.jpg" alt="Facebook"></a>
+                    <a href="/"><img src="MoviePosters/x.png" alt="X"></a>
+                    <a href="/"><img src="MoviePosters/instagram.png" alt="Instagram"></a>
+                    <a href="/"><img src="MoviePosters/youtube.png" alt="YouTube"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 BooK By EverMovie. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
