@@ -274,14 +274,78 @@
     </div>
 
     <script>
+
+        const validateEmail = (email) => {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(String(email).toLowerCase());
+        };
+    
+        const showAlert = (msg) => {
+            alert(msg);
+        };
+    
+        const signUpForm = document.querySelector('.sign-up form');
+        signUpForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+    
+            const name = this.querySelector('input[placeholder="Name"]').value.trim();
+            const email = this.querySelector('input[placeholder="Email"]').value.trim();
+            const password = this.querySelector('input[placeholder="Password"]').value;
+    
+        if (!name || !email || !password) {
+                return showAlert('All fields are required.');
+        }if (!validateEmail(email)) {
+                return showAlert('Please enter a valid email address.');
+         }
+            if (password.length < 6) {
+                return showAlert('Password should be at least 6 characters.');}
+            if (localStorage.getItem(email)) {
+                return showAlert('User already exists. Please login.');
+            }
+    
+
+            const userData = { name, email, password };
+            localStorage.setItem(email, JSON.stringify(userData));
+            showAlert('Account created successfully! Please login.');
+            container.classList.remove("active");
+        });
+
+        const signInForm = document.querySelector('.sign-in form');
+        signInForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+    
+            const email = this.querySelector('input[placeholder="Email"]').value.trim();
+            const password = this.querySelector('input[placeholder="Password"]').value;
+    
+            if (!email || !password) {
+                return showAlert('Both fields are required.');
+            }
+            if (!validateEmail(email)) {
+                return showAlert('Please enter a valid email.');
+            }
+    
+            const user = localStorage.getItem(email);
+            if (!user) {
+                return showAlert('User not found. Please sign up.');
+            }
+    
+            const userData = JSON.parse(user);
+            if (userData.password !== password) {
+                return showAlert('Incorrect password.');
+            }
+    
+            showAlert(`Welcome back, ${userData.name}!`);
+            window.location.href = '/';
+        });
+    
         const container = document.getElementById('container');
         const registerBtn = document.getElementById('register');
         const loginBtn = document.getElementById('login');
-
+    
         registerBtn.addEventListener('click', () => {
             container.classList.add("active");
         });
-
+    
         loginBtn.addEventListener('click', () => {
             container.classList.remove("active");
         });
