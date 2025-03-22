@@ -7,9 +7,11 @@
     <title>About Us</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-.sign-up a{
-    color: rgb(255, 255, 255);
-}
+
+        .sign-up a {
+            color: rgb(255, 255, 255);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -445,9 +447,11 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
-        .book a{
+
+        .book a {
             color: white;
         }
+
         .book {
             padding: 0px;
             border: 1px solid rgb(248, 68, 100);
@@ -606,6 +610,103 @@
             transform: scale(1.05);
             cursor: pointer;
         }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-content h2 {
+            margin-bottom: 10px;
+        }
+
+        .modal-content button {
+            margin-top: 15px;
+            padding: 8px 16px;
+            background-color: rgb(248, 68, 100);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .rate-now {
+            padding: 8px 16px;
+            background-color: rgb(248, 68, 100);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Popup Modal */
+        .rating-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .rating-modal-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            position: relative;
+            width: 300px;
+        }
+
+        .stars {
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+        }
+
+        .star {
+            font-size: 24px;
+            color: #ccc;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .star.active {
+            color: gold;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            cursor: pointer;
+            font-size: 18px;
+            color: #333;
+        }
+        #starsContainer span{
+            margin: 0;
+        }
     </style>
 </head>
 
@@ -614,7 +715,8 @@
         <nav>
             <div class="left-nav">
                 <div class="logo">
-                    <a href="https://hackyvirus.github.io/EverMovie/"> <img id="logo" src="MoviePosters/logo.png" alt="Logo"></a>
+                    <a href="https://hackyvirus.github.io/EverMovie/"> <img id="logo" src="MoviePosters/logo.png"
+                            alt="Logo"></a>
                 </div>
                 <input class="search" type="text"
                     placeholder="Search for Movies, Evenets, Palys, Sports and Activities ">
@@ -628,7 +730,7 @@
                     </select>
                 </div>
                 <div class="sign-up">
-                    <a href="signup.html">  Sing Up</a>
+                    <a href="signup.html"> Sing Up</a>
                 </div>
             </div>
         </nav>
@@ -663,7 +765,7 @@
                         <h5>Add your rating & review</h5>
                         <h6>Your ratings matter</h6>
                     </div>
-                    <button class="rate-now">
+                    <button class="rate-now" onclick="openModal()">
                         Rate Now
                     </button>
                 </div>
@@ -675,10 +777,42 @@
                     <h2>2h 30m | Drama, Suspense, Thriller | A | 2 Oct, 2024</h2>
                 </div>
                 <div class="book">
-                    <a href="payment.html"><h2>Book Now</h2></a>
+                    <a href="payment.html">
+                        <h2>Book Now</h2>
+                    </a>
+                </div>
+                <div
+                    style="width: 300px; display: flex; justify-content: space-between; align-items: center; color:white;flex-direction: row;">
+                    <button style="width: max-content;padding: 4px 10px; cursor: pointer;"
+                        onclick="showCertification('A')">Show Certification</button>
+
+                    <div class="like-btn" style="font-size: xx-large; cursor: pointer;" onclick="toggleLike(this)">
+                        ❤️ <span class="like-count">0</span>
+                    </div>
                 </div>
             </div>
         </section>
+        <div id="certModal" class="modal">
+            <div class="modal-content">
+                <h2>Movie Certification</h2>
+                <p id="certificationText"></p>
+                <button onclick="closeModal1()">OK</button>
+            </div>
+        </div>
+        <div class="rating-modal" id="ratingModal">
+            <div class="rating-modal-content">
+                <span class="close-btn" onclick="closeModal()">×</span>
+                <h3>Rate this Movie</h3>
+                <div class="stars" id="starsContainer">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                </div>
+                <button class="rate-now" onclick="submitRating()">Submit</button>
+            </div>
+        </div>
     </main>
     <div id="about">
         <h2>About the movie</h2>
@@ -859,6 +993,85 @@
             <p>&copy; 2024 BooK By EverMovie. All Rights Reserved.</p>
         </div>
     </footer>
+    <script>
+        function showCertification(certType) {
+            const modal = document.getElementById('certModal');
+            const text = document.getElementById('certificationText');
+            text.innerText = `This movie is certified as "${certType}"`;
+            modal.style.display = "flex";
+        }
+
+        function closeModal1() {
+            const modal = document.getElementById('certModal');
+            modal.style.display = "none";
+        }
+
+        function toggleLike(btn) {
+            const countSpan = btn.querySelector('.like-count');
+            let count = parseInt(countSpan.innerText);
+
+            if (btn.classList.contains('liked')) {
+                btn.classList.remove('liked');
+                count--;
+            } else {
+                btn.classList.add('liked');
+                count++;
+            }
+
+            countSpan.innerText = count;
+        }
+
+        const modal = document.getElementById("ratingModal");
+        const stars = document.querySelectorAll('.star');
+        let selectedRating = 0;
+
+        function openModal() {
+            modal.style.display = "flex";
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+            resetStars();
+        }
+
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                selectedRating = star.getAttribute('data-value');
+                highlightStars(selectedRating);
+            });
+        });
+
+        function highlightStars(rating) {
+            stars.forEach(star => {
+                if (star.getAttribute('data-value') <= rating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+        }
+
+        function resetStars() {
+            stars.forEach(star => star.classList.remove('active'));
+            selectedRating = 0;
+        }
+
+        function submitRating() {
+            if (selectedRating > 0) {
+                alert(`You rated this movie ${selectedRating} star(s)!`);
+                closeModal();
+            } else {
+                alert('Please select a rating!');
+            }
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+    </script>
 </body>
 
 </html>
